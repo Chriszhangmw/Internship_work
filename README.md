@@ -48,20 +48,16 @@ drug_producer(Drug -- Producer)
 ### Running
 
 1. inputs: what kind of drug ia suggested having hepatitis(请问肝炎应该吃什么药)
-
-   ![image-20200620065214545](C:\Users\Meiwei\AppData\Roaming\Typora\typora-user-images\image-20200620065214545.png)
+   ![3](https://raw.github.com/Chriszhangmw/Internship_work/master/pic/image-20200620065214545.png)
 
 2. system will require you select one of sepecifc hepatitis, then I choose number 2(2:丙型病毒性肝炎)
-
-   ![image-20200620065500739](C:\Users\Meiwei\AppData\Roaming\Typora\typora-user-images\image-20200620065500739.png)
+   ![4](https://raw.github.com/Chriszhangmw/Internship_work/master/pic/image-20200620065500739.png)
 
 3. system execute the intend's action, search the durg for the disease from knowledge graph
-
-   ![image-20200620065627161](C:\Users\Meiwei\AppData\Roaming\Typora\typora-user-images\image-20200620065627161.png)
+   ![5](https://raw.github.com/Chriszhangmw/Internship_work/master/pic/image-20200620065627161.png)
 
 4. then user ask the complications, even the sentence does not have disease name, but rasa can get the entity from tracker and use the disease as the main entity for the current conversation.
-
-   ![image-20200620070227987](C:\Users\Meiwei\AppData\Roaming\Typora\typora-user-images\image-20200620070227987.png)
+   ![6](https://raw.github.com/Chriszhangmw/Internship_work/master/pic/image-20200620070227987.png)
 
 5. use can contibue ask questions ....
 
@@ -79,8 +75,8 @@ drug_producer(Drug -- Producer)
 
 assert that if user want to know the weather, uses must provide location and date time to the system, and we can extend our business logical to other scenarios, for example, if you want search  how to solve a repair order, you must provide the position of the problem, the time of the problem occurs, the type of network element, only the user fill all these three slots in the conversation, the system will execute the search function, we call these process is task based conversation.
 
+![7](https://raw.github.com/Chriszhangmw/Internship_work/master/pic/image-20200620111619400.png)
 
-![image-20200620111619400](C:\Users\Meiwei\AppData\Roaming\Typora\typora-user-images\image-20200620111619400.png)
 
 
 
