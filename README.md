@@ -40,10 +40,10 @@ belongs_to(Disease -- Department)
 can_eat(Disease-- Food)
 not_eat(Disease-- Food)
 drug_producer(Drug -- Producer)
+![1](https://raw.github.com/Chriszhangmw/Internship_work/master/pic/image-20200619071734697.png)
 
-![image-20200619071734697](C:\Users\Meiwei\AppData\Roaming\Typora\typora-user-images\image-20200619071734697.png)
+![2](https://raw.github.com/Chriszhangmw/Internship_work/master/pic/image-20200619072507739.png)
 
-![image-20200619072507739](C:\Users\Meiwei\AppData\Roaming\Typora\typora-user-images\image-20200619072507739.png)
 
 ### Running
 
