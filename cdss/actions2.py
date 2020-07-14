@@ -4,6 +4,7 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from py2neo import Graph
 from markdownify import markdownify as md
+from rasa.core.actions.action import  ActionDefaultAskAffirmation
 
 
 p = 'data/medical/lookup/Diseases.txt'
@@ -50,17 +51,7 @@ class ActionFirst(Action):
             domain: Dict[Text, Any]):
         dispatcher.utter_template("utter_first", tracker)
         # dispatcher.utter_template("utter_howcanhelp", tracker)
-        dispatcher.utter_message(md("您可以这样向我提问: "
-                                    "<br/>头痛怎么办<br/>\
-                              什么人容易头痛<br/>\
-                              头痛吃什么药<br/>\
-                              头痛能治吗<br/>\
-                              头痛属于什么科<br/>\
-                              头孢地尼分散片用途<br/>\
-                              如何防止头痛<br/>\
-                              头痛要治多久<br/>\
-                              糖尿病有什么并发症<br/>\
-                              糖尿病有什么症状"))
+        dispatcher.utter_message(md("您可以这样向我提问: <br/>疾病咨询<br/>药物咨询"))
         return []
 
 
@@ -74,24 +65,13 @@ class ActionDonKnow(Action):
             domain: Dict[Text, Any]):
         dispatcher.utter_template("utter_donknow", tracker)
         # dispatcher.utter_template("utter_howcanhelp", tracker)
-        dispatcher.utter_message(md("您可以这样向我提问: <br/>头痛怎么办<br/>\
-                                      什么人容易头痛<br/>\
-                                      头痛吃什么药<br/>\
-                                      头痛能治吗<br/>\
-                                      头痛属于什么科<br/>\
-                                      头孢地尼分散片用途<br/>\
-                                      如何防止头痛<br/>\
-                                      头痛要治多久<br/>\
-                                      糖尿病有什么并发症<br/>\
-                                      糖尿病有什么症状"))
+        dispatcher.utter_message(md("您可以这样向我提问: <br/>疾病咨询<br/>药物咨询"))
         return []
 
 
-
-
-class ActionSearchTreat(Action):
+class Action_Disease(Action):
     def name(self) -> Text:
-        return "action_search_treat"
+        return "action_disease"
 
     def run(self,
             dispatcher: CollectingDispatcher,
@@ -100,11 +80,7 @@ class ActionSearchTreat(Action):
 
         disease = tracker.get_slot("disease")
         pre_disease = tracker.get_slot("sure")
-        print("pre_disease::::" + str(pre_disease))
-
-        
         possible_diseases = retrieve_disease_name(disease)
-        # if len(possible_diseases) == 1 or sure == "true":
         if disease == pre_disease or len(possible_diseases) == 1:
             a = graph.run("match (a:Disease{name: {disease}}) return a", disease=disease).data()[0]['a']
             if "intro" in a:
@@ -435,6 +411,24 @@ class ActionSearchDiseaseDept(Action):
         return []
 
 
+class ActionSearchDisease(Action):
+    def name(self) -> Text:
+        return "action_search_disease"
+
+    def run(self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]):
+        disease = tracker.get_slot("disease")
+        pre_disease = tracker.get_slot("sure")
+
+        possible_diseases = ['查部门','查药物','查症状','查食物']
+
+        buttons = []
+        for d in possible_diseases:
+            buttons.append(make_button(d, '/search_disease{{"disease":"{0}", "sure":"{1}"}}'.format(d, d)))
+        dispatcher.utter_button_message("请点击选择想查询的疾病，若没有想要的，请忽略此消息", buttons)
+        return []
 
 
 

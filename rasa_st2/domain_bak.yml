@@ -1,0 +1,58 @@
+intents:
+  - greet
+  - goodbye
+  - request_cpu
+  - request_weather
+  - inform
+
+
+slots:
+  location:
+    type: text
+  date_time:
+    type: text
+  ip:
+    type: text
+  direction:
+    type: text
+
+entities:
+ - location
+ - date_time
+ - ip
+ - direction
+
+forms:
+  - weather_form
+  - cpu_form
+
+
+responses:
+    utter_greet:
+      - 'Hello! How can I help?'
+    utter_goodbye:
+      - 'Talk to you later.'
+      - 'Bye bye :('
+    utter_ask_location:
+      - 'In what location?'
+    utter_ask_date_time:
+      - 'In what time?'
+    utter_ask_ip:
+      - 'tell me your IP'
+      - 'pls tell me IP'
+    utter_ask_direction:
+      - 'in what region?'
+      - 'tell you your direction'
+
+
+actions:
+ - utter_greet
+ - utter_goodbye
+ - utter_ask_location
+ - utter_ask_date_time
+ - utter_ask_ip
+ - utter_ask_direction
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

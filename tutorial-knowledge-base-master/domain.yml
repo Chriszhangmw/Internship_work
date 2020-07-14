@@ -1,0 +1,85 @@
+session_config:
+  session_expiration_time: 60.0
+  carry_over_slots_to_new_session: true
+intents:
+- affirm
+- bye
+- compare_entities
+- deny
+- greet
+- help
+- out_of_scope
+- query_attribute
+- query_entities
+- query_relations
+
+entities:
+- attribute
+- category
+- country
+- entity_type
+- ip
+- mention
+- microservice
+
+slots:
+  attribute:
+    type: text
+  category:
+    type: text
+  country:
+    type: text
+  entity_type:
+    type: text
+  mention:
+    type: text
+  ip:
+    type: text
+  cpu configuration:
+    type: text
+  cpu cores:
+    type: text
+  cpu usage:
+    type: text
+  cpu status:
+    type: text
+  io:
+    type: text
+
+
+templates:
+  utter_greet:
+  - text: Hi. I can give you some information about banks or I can give you some details
+      about the accounts you own. What do you want to know?
+  utter_goodbye:
+  - text: Talk to you later!
+  - text: Bye.
+  utter_ok:
+  - text: Ok
+  utter_rephrase:
+  - text: Can you please rephrase?
+  - text: Sorry, I didn't get that. Can you rephrase?
+  utter_out_of_scope:
+  - text: Sorry, I cannot help you with that.
+  - text: I'm not able to help you with that.
+  utter_help:
+  - text: I can tell you some facts about different networks. I can answer some questions
+      about your host.
+  utter_ask_ip:
+    - text: what is you ip?
+  utter_ask_microservice:
+    - text: what is your microservice name?
+actions:
+- action_compare_entities
+- action_query_entities
+- utter_greet
+- utter_goodbye
+- utter_ok
+- utter_rephrase
+- utter_out_of_scope
+- utter_help
+- utter_ask_ip
+- utter_ask_microservice
+forms:
+  - action_query_attribute
+  - action_query_relations

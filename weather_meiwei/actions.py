@@ -3,12 +3,14 @@ from typing import Dict, Text, Any, List, Union
 from rasa_sdk.events import SlotSet
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+
 class ActionWeather(FormAction):
 	def name(self):
 		return 'weather_form'
 
 	@staticmethod
 	def required_slots(tracker: Tracker) -> List[Text]:
+		#这个地方可以考虑用查询
 		return ["location", "date_time"]
 
 	def submit(self, dispatcher: CollectingDispatcher,

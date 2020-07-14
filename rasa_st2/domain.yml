@@ -1,0 +1,63 @@
+intents:
+  - configuration
+  - status
+  - ip_input
+
+
+
+
+
+slots:
+  ip:
+    type: text
+  microservice:
+    type: text
+  cpu:
+    type: text
+  memory:
+    type: text
+  s:
+    type: unfeaturized
+
+
+
+
+entities:
+ - ip
+ - microservice
+ - cpu
+ - memory
+
+
+responses:
+    utter_ask_ip:
+      - 'what is your ip?'
+    utter_ask_microservice:
+      - 'what is your microservice?'
+    utter_ask_cpu:
+      - 'what is your cpu?'
+    utter_ask_memory:
+      - 'what is your memory'
+    utter_restart_with_button:
+      - buttons:
+          - payload: /restart
+            title: Restart
+        text: Click the button below if you want to start over.
+#    utter_donknow:
+#      - "Sorry, I cannot undersatnd your question, could you pls rephrase your question?"
+
+
+
+actions:
+ - utter_ask_ip
+ - utter_ask_microservice
+ - utter_ask_cpu
+ - utter_ask_memory
+ - configuration_action
+ - status_action
+# - utter_donknow
+# - action_donknow
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
